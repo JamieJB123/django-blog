@@ -18,13 +18,13 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 * - Sets the form's action attribute to the `edit_comment/{commentId}` endpoint.
 */
 for (let button of editButtons) {
-  button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
-    let commentContent = document.getElementById(`comment${commentId}`).innerText;
-    commentText.value = commentContent;
-    submitButton.innerText = "Update";
-    commentForm.setAttribute("action", `edit_comment/${commentId}`);
-  });
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("data-comment_id");
+        let commentContent = document.getElementById(`comment${commentId}`).innerText;
+        commentText.value = commentContent;
+        submitButton.innerText = "Update";
+        commentForm.setAttribute("action", `edit_comment/${commentId}`);
+    });
 }
 
 /**
@@ -38,9 +38,9 @@ for (let button of editButtons) {
 * the user for confirmation before deletion.
 */
 for (let button of deleteButtons) {
-  button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
-    deleteConfirm.href = `delete_comment/${commentId}`;
-    deleteModal.show();
-  });
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("data-comment_id");
+        deleteConfirm.href = `delete_comment/${commentId}`;
+        deleteModal.show();
+    });
 }
